@@ -748,9 +748,7 @@ button{cursor:pointer;font-family:inherit}
       <span class="pt-inline lang-inline">Inscreva-se na lista de espera e seja o primeiro a saber quando Casa Nilaya estiver disponível.</span>
       <span class="en-inline lang-inline">Join the waitlist and be the first to know when Casa Nilaya is available for booking.</span>
     </p>
-    <form class="waitlist__form" id="sib-form" method="POST"
-         action="https://6fcaa7ca.sibforms.com/serve/MUIFAAtzYA0ax8o_jdmzWi_b9KINLxhPIdPssTjv-pjdauSOm-uUWFeUxoIOQnRgBzTShhtPi1-VBWZ9YjLMkDLhtQQx72_fe-L-XakIZHI15oF_NHvp3R-49CHxx8Wt43U1lxtDj6QjkNBinLdav9gPyApn2SoKX1K-G_qrOvk9UP-qs3iUPnUzfNbvjhPgy9if-SrCE1sYhzqjCw=="
-         data-type="subscription" novalidate>
+    <form class="waitlist__form" id="waitlistForm" novalidate>
       <label for="EMAIL" class="sr-only">
         <span class="lang-inline nl-inline active">E-mailadres</span>
         <span class="lang-inline pt-inline">Endereço de e-mail</span>
@@ -760,13 +758,11 @@ button{cursor:pointer;font-family:inherit}
              autocomplete="email" required maxlength="254" inputmode="email"
              spellcheck="false" aria-describedby="emailError"
              placeholder="jouw@emailadres.nl"/>
-      <button type="submit" class="btn btn--primary" form="sib-form">
+      <button type="submit" class="btn btn--primary">
         <span class="lang-inline nl-inline active">Aanmelden</span>
         <span class="lang-inline pt-inline">Inscrever</span>
         <span class="lang-inline en-inline">Join</span>
       </button>
-      <input type="text" name="email_address_check" value="" style="display:none" aria-hidden="true"/>
-      <input type="hidden" name="locale" value="en"/>
     </form>
     <div class="waitlist__error" id="emailError" role="alert" aria-live="polite" style="display:none;color:var(--col-error);font-size:var(--fs-sm);margin-top:var(--sp-3)"><span class="lang-inline nl-inline active">Voer een geldig e-mailadres in.</span><span class="lang-inline pt-inline">Insira um e-mail válido.</span><span class="lang-inline en-inline">Please enter a valid email address.</span></div>
     <p class="waitlist__note" style="margin-top:var(--sp-3)">
@@ -973,18 +969,66 @@ button{cursor:pointer;font-family:inherit}
     });
   });
 
+  /* ── Waitlist form — Brevo integration via fetch ── */
+  var wlForm   = document.getElementById('waitlistForm');
+  var wlInput  = document.getElementById('EMAIL');
+  var wlSuccess = document.getElementById('successMsg');
+  var wlError   = document.getElementById('emailError');
+
+  var EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+
+  function sanitizeEmail(v) { return String(v).trim().toLowerCase().substring(0, 254); }
+  function showWlError() {
+    if (wlInput) { wlInput.classList.add('invalid'); wlInput.setAttribute('aria-invalid','true'); }
+    if (wlError)  wlError.style.display = 'block';
+  }
+  function clearWlError() {
+    if (wlInput) { wlInput.classList.remove('invalid'); wlInput.setAttribute('aria-invalid','false'); }
+    if (wlError)  wlError.style.display = 'none';
+  }
+
+  if (wlForm && wlInput) {
+    wlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = sanitizeEmail(wlInput.value);
+      if (!EMAIL_RE.test(email)) { showWlError(); wlInput.focus(); return; }
+      clearWlError();
+
+      // Post to Brevo via no-cors fetch (Brevo accepts cross-origin form posts)
+      var body = new FormData();
+      body.append('EMAIL', email);
+      body.append('email_address_check', '');
+      body.append('locale', 'en');
+
+      fetch('https://6fcaa7ca.sibforms.com/serve/MUIFAAtzYA0ax8o_jdmzWi_b9KINLxhPIdPssTjv-pjdauSOm-uUWFeUxoIOQnRgBzTShhtPi1-VBWZ9YjLMkDLhtQQx72_fe-L-XakIZHI15oF_NHvp3R-49CHxx8Wt43U1lxtDj6QjkNBinLdav9gPyApn2SoKX1K-G_qrOvk9UP-qs3iUPnUzfNbvjhPgy9if-SrCE1sYhzqjCw==', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: body
+      }).then(function() {
+        wlForm.style.display = 'none';
+        if (wlSuccess) wlSuccess.style.display = 'block';
+        try {
+          var list = JSON.parse(sessionStorage.getItem('cn_wl') || '[]');
+          list.push({ ts: Date.now(), lang: currentLang });
+          sessionStorage.setItem('cn_wl', JSON.stringify(list));
+        } catch(err) {}
+      }).catch(function() {
+        // no-cors always resolves, this only fires on network error
+        wlForm.style.display = 'none';
+        if (wlSuccess) wlSuccess.style.display = 'block';
+      });
+    });
+
+    wlInput.addEventListener('blur', function() {
+      if (wlInput.value && !EMAIL_RE.test(sanitizeEmail(wlInput.value))) showWlError();
+      else clearWlError();
+    });
+    wlInput.addEventListener('input', function() { clearWlError(); });
+  }
 })();
 </script>
 
-<!-- Brevo form script -->
-<script>
-  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-  window.EMAIL_INVALID_MESSAGE = "Voer een geldig e-mailadres in.";
-  window.REQUIRED_ERROR_MESSAGE = "Dit veld mag niet leeg zijn.";
-  window.GENERIC_INVALID_MESSAGE = "De ingevoerde informatie is ongeldig.";
-  window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected' } };
-  var AUTOHIDE = Boolean(0);
-</script>
-<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+
 </body>
 </html>
