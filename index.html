@@ -313,8 +313,6 @@ button{cursor:pointer;font-family:inherit}
 .hero__ig-btn{position:absolute;top:calc(var(--nav-h) + var(--sp-5));right:var(--sp-5);z-index:3;display:inline-flex;align-items:center;gap:var(--sp-2);background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:rgba(255,255,255,0.90);font-size:var(--fs-xs);font-weight:500;letter-spacing:0.08em;padding:var(--sp-2) var(--sp-4);border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.30);text-decoration:none;transition:background var(--dur-fast),border-color var(--dur-fast);white-space:nowrap}
 .hero__ig-btn:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.55)}
 @media(max-width:400px){.hero__ig-btn span:not([aria-hidden]){display:none}}
-
-@media(min-width:640px){#navCta{display:inline-flex!important}}
 </style>
 </head>
 <body>
@@ -342,11 +340,6 @@ button{cursor:pointer;font-family:inherit}
           <button class="lang-btn" data-lang="pt" aria-pressed="false">PT</button>
           <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
-        <a href="#waitlist" class="btn btn--primary" id="navCta" style="display:none">
-          <span class="lang-inline nl-inline active">Wachtlijst</span>
-          <span class="lang-inline pt-inline">Lista</span>
-          <span class="lang-inline en-inline">Waitlist</span>
-        </a>
         <button class="nav__hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Menu openen">
           <span></span><span></span><span></span>
         </button>
