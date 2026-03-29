@@ -287,29 +287,25 @@ button{cursor:pointer;font-family:inherit}
 .photo-single__item{position:relative;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:3/2;background:var(--col-warm)}
 
 
-/* ── Privacy page specific ── */
+/* ── Privacy page specific ───────────────────────────── */
 .privacy-hero{
-  padding:calc(var(--nav-h) + var(--sp-16)) 0 var(--sp-16);
+  padding:calc(var(--nav-h) + var(--sp-16)) 0 var(--sp-12);
   background:var(--col-linen);
   border-bottom:1px solid var(--col-warm);
 }
 .privacy-hero__eyebrow{
   display:inline-block;font-size:var(--fs-xs);font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--col-gold);
-  margin-bottom:var(--sp-4)
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--col-gold);margin-bottom:var(--sp-4);
 }
 .privacy-hero__title{
   font-family:'Cormorant Garamond',Georgia,serif;
   font-size:var(--fs-2xl);font-weight:300;line-height:1.15;
-  color:var(--col-dark);margin-bottom:var(--sp-4)
+  color:var(--col-dark);margin-bottom:var(--sp-4);
 }
-.privacy-hero__meta{
-  font-size:var(--fs-sm);color:var(--col-muted);
-}
-.privacy-content{
-  padding:var(--sp-20) 0 var(--sp-24);
-  background:var(--col-white);
-}
+.privacy-hero__meta{font-size:var(--fs-sm);color:var(--col-muted)}
+.privacy-content{padding:var(--sp-16) 0 var(--sp-24);background:var(--col-white)}
+.privacy-block{display:none}.privacy-block.active{display:block}
 .privacy-body{max-width:680px}
 .privacy-body h2{
   font-family:'Cormorant Garamond',Georgia,serif;
@@ -319,32 +315,13 @@ button{cursor:pointer;font-family:inherit}
   border-bottom:1px solid var(--col-linen);
 }
 .privacy-body h2:first-child{margin-top:0}
-.privacy-body p{
-  font-size:var(--fs-base);color:var(--col-muted);
-  line-height:1.85;margin-bottom:var(--sp-3);
-}
-.privacy-body ul{
-  margin:var(--sp-3) 0 var(--sp-4) var(--sp-6);
-  display:flex;flex-direction:column;gap:var(--sp-2);
-}
-.privacy-body ul li{
-  font-size:var(--fs-base);color:var(--col-muted);line-height:1.75;
-  position:relative;
-}
-.privacy-body ul li::before{
-  content:'▸';position:absolute;left:calc(-1 * var(--sp-5));
-  color:var(--col-gold);font-size:.8em;top:.15em;
-}
-.privacy-body a{color:var(--col-forest);text-decoration:underline;text-underline-offset:3px}
+.privacy-body p{font-size:var(--fs-base);color:var(--col-muted);line-height:1.85;margin-bottom:var(--sp-3)}
+.privacy-body ul{margin:var(--sp-3) 0 var(--sp-4) var(--sp-6);display:flex;flex-direction:column;gap:var(--sp-2)}
+.privacy-body ul li{font-size:var(--fs-base);color:var(--col-muted);line-height:1.75;position:relative}
+.privacy-body ul li::before{content:'▸';position:absolute;left:calc(-1 * var(--sp-5));color:var(--col-gold);font-size:.8em;top:.15em}
+.privacy-body a{color:var(--col-forest);text-underline-offset:3px}
 .privacy-body a:hover{color:var(--col-gold)}
-.privacy-block{display:none}.privacy-block.active{display:block}
-.back-link{
-  display:inline-flex;align-items:center;gap:var(--sp-2);
-  font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--col-forest);text-decoration:none;margin-bottom:var(--sp-8);
-  border-bottom:1px solid transparent;transition:border-color var(--dur-fast),color var(--dur-fast);
-}
-.back-link:hover{color:var(--col-gold);border-bottom-color:var(--col-gold-lt)}
+.back-btn-wrap{margin-top:var(--sp-16);padding-top:var(--sp-10);border-top:1px solid var(--col-linen)}
 </style>
 </head>
 <body>
@@ -399,7 +376,7 @@ button{cursor:pointer;font-family:inherit}
 
 <main id="main-content">
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <div class="privacy-hero">
   <div class="container--narrow">
     <p class="privacy-hero__eyebrow">
@@ -407,58 +384,40 @@ button{cursor:pointer;font-family:inherit}
       <span class="lang-inline pt-inline">Legal</span>
       <span class="lang-inline en-inline">Legal</span>
     </p>
-    <h1 class="privacy-hero__title">
+    <h1 class="privacy-hero__title" id="privacyTitle">
       <span class="lang-inline nl-inline active">Privacybeleid</span>
       <span class="lang-inline pt-inline">Política de Privacidade</span>
       <span class="lang-inline en-inline">Privacy Policy</span>
     </h1>
     <p class="privacy-hero__meta">
-      <span class="lang-inline nl-inline active">Versie 1.0 · Laatst bijgewerkt: 29 maart 2026 · Good in Holiday Homes LDA</span>
-      <span class="lang-inline pt-inline">Versão 1.0 · Última actualização: 29 maart 2026 · Good in Holiday Homes LDA</span>
-      <span class="lang-inline en-inline">Version 1.0 · Last updated: 29 maart 2026 · Good in Holiday Homes LDA</span>
+      <span class="lang-inline nl-inline active">Versie 1.0 &middot; Laatste update: 29 maart 2026 &middot; Good in Holiday Homes LDA</span>
+      <span class="lang-inline pt-inline">Versão 1.0 &middot; Última actualização: 29 março 2026 &middot; Good in Holiday Homes LDA</span>
+      <span class="lang-inline en-inline">Version 1.0 &middot; Last updated: 29 March 2026 &middot; Good in Holiday Homes LDA</span>
     </p>
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- ── CONTENT ── -->
 <section class="privacy-content" aria-labelledby="privacyTitle">
   <div class="container--narrow">
 
-    <a href="index.html" class="back-link">
-      ← <span class="lang-inline nl-inline active">Terug naar Casa Nilaya</span>
-      <span class="lang-inline pt-inline">Voltar para Casa Nilaya</span>
-      <span class="lang-inline en-inline">Back to Casa Nilaya</span>
-    </a>
-
-    <!-- Language tabs (separate from nav lang switcher) -->
     <!-- NL -->
-    <div class="privacy-block active" id="privacy-nl" role="tabpanel">
+    <div class="privacy-block active" id="privacy-nl">
       <div class="privacy-body">
         <h2>1. Verwerkingsverantwoordelijke</h2>
-        <p>Good in Holiday Homes LDA<br>
-        Handelsnaam: Casa Nilaya<br>
-        Website: casanilaya.com<br>
-        E-mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a><br>
-        Adres: Cabeço da Vela, Caldas da Rainha, Portugal</p>
-
+        <p>Good in Holiday Homes LDA<br>Handelsnaam: Casa Nilaya<br>Website: casanilaya.com<br>E-mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a><br>Adres: Cabeço da Vela, Caldas da Rainha, Portugal</p>
         <h2>2. Welke gegevens verzamelen wij?</h2>
         <p>Wij verzamelen uitsluitend uw <strong>e-mailadres</strong>, wanneer u zich aanmeldt voor de wachtlijst op onze website. Wij verzamelen geen andere persoonsgegevens. Wij plaatsen geen cookies. Wij gebruiken geen tracking- of analysesoftware.</p>
-
         <h2>3. Waarvoor gebruiken wij uw gegevens?</h2>
         <p>Uw e-mailadres wordt uitsluitend gebruikt om u te informeren wanneer Casa Nilaya beschikbaar is voor boeking. Wij versturen geen commerciële berichten zonder uw toestemming.</p>
-
         <h2>4. Rechtsgrond (GDPR art. 6)</h2>
         <p>De verwerking is gebaseerd op uw <strong>toestemming</strong> (art. 6 lid 1 sub a AVG/GDPR), gegeven door het invullen en indienen van het aanmeldformulier.</p>
-
         <h2>5. Hoe lang bewaren wij uw gegevens?</h2>
         <p>Wij bewaren uw e-mailadres totdat Casa Nilaya operationeel is en u de eerste boekingsmelding heeft ontvangen, of totdat u uw toestemming intrekt. Daarna worden uw gegevens verwijderd.</p>
-
         <h2>6. Delen wij uw gegevens?</h2>
         <p>Nee. Wij delen uw persoonsgegevens niet met derden, tenzij wij hiertoe wettelijk verplicht zijn.</p>
-
         <h2>7. Google Fonts</h2>
-        <p>Onze website maakt gebruik van Google Fonts voor typografie. Hierbij kan uw IP-adres worden doorgezonden aan Google LLC (VS). Dit valt onder het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacybeleid van Google</a>.</p>
-
+        <p>Onze website maakt gebruik van Google Fonts voor typografie. Hierbij kan uw IP-adres worden doorgezonden aan Google LLC (VS). Zie het <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">privacybeleid van Google</a>.</p>
         <h2>8. Uw rechten</h2>
         <p>Op grond van de AVG heeft u de volgende rechten:</p>
         <ul>
@@ -469,44 +428,38 @@ button{cursor:pointer;font-family:inherit}
           <li>Recht om uw toestemming in te trekken</li>
           <li>Recht om een klacht in te dienen bij de <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener noreferrer">Autoriteit Persoonsgegevens</a></li>
         </ul>
-        <p>Om uw rechten uit te oefenen, stuurt u een e-mail naar <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a>.</p>
-
+        <p>Om uw rechten uit te oefenen: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a></p>
         <h2>9. Beveiliging</h2>
         <p>Wij nemen passende technische en organisatorische maatregelen om uw gegevens te beschermen tegen verlies of onbevoegde toegang.</p>
-
         <h2>10. Wijzigingen</h2>
         <p>Dit privacybeleid kan worden gewijzigd. De meest recente versie is altijd beschikbaar op casanilaya.com/privacy.html. Bij wezenlijke wijzigingen informeren wij u per e-mail.</p>
+      </div>
+      <div class="back-btn-wrap">
+        <a href="index.html" class="btn btn--outline">
+          ← <span class="lang-inline nl-inline active">Terug naar Casa Nilaya</span>
+          <span class="lang-inline pt-inline">Voltar para Casa Nilaya</span>
+          <span class="lang-inline en-inline">Back to Casa Nilaya</span>
+        </a>
       </div>
     </div>
 
     <!-- PT -->
-    <div class="privacy-block" id="privacy-pt" role="tabpanel">
+    <div class="privacy-block" id="privacy-pt">
       <div class="privacy-body">
         <h2>1. Responsável pelo tratamento</h2>
-        <p>Good in Holiday Homes LDA<br>
-        Nome comercial: Casa Nilaya<br>
-        Website: casanilaya.com<br>
-        E-mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a><br>
-        Morada: Cabeço da Vela, Caldas da Rainha, Portugal</p>
-
+        <p>Good in Holiday Homes LDA<br>Nome comercial: Casa Nilaya<br>Website: casanilaya.com<br>E-mail: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a><br>Morada: Cabeço da Vela, Caldas da Rainha, Portugal</p>
         <h2>2. Que dados recolhemos?</h2>
         <p>Recolhemos exclusivamente o seu <strong>endereço de e-mail</strong>, quando se inscreve na lista de espera do nosso website. Não recolhemos outros dados pessoais. Não utilizamos cookies. Não utilizamos software de rastreamento ou análise.</p>
-
         <h2>3. Para que utilizamos os seus dados?</h2>
         <p>O seu endereço de e-mail é utilizado exclusivamente para o informar quando Casa Nilaya estiver disponível para reserva. Não enviamos comunicações comerciais sem o seu consentimento.</p>
-
         <h2>4. Base jurídica (RGPD art. 6.º)</h2>
         <p>O tratamento baseia-se no seu <strong>consentimento</strong> (art. 6.º, n.º 1, al. a) do RGPD), dado ao preencher e submeter o formulário de inscrição.</p>
-
         <h2>5. Durante quanto tempo conservamos os seus dados?</h2>
-        <p>Conservamos o seu endereço de e-mail até Casa Nilaya estar operacional e o ter notificado sobre a disponibilidade de reserva, ou até retirar o seu consentimento. Após isso, os seus dados são eliminados.</p>
-
+        <p>Conservamos o seu endereço de e-mail até Casa Nilaya estar operacional e o ter notificado, ou até retirar o seu consentimento. Após isso, os seus dados são eliminados.</p>
         <h2>6. Partilhamos os seus dados?</h2>
         <p>Não. Não partilhamos os seus dados pessoais com terceiros, salvo obrigação legal.</p>
-
         <h2>7. Google Fonts</h2>
         <p>O nosso website utiliza o Google Fonts para tipografia. O seu endereço IP poderá ser transmitido à Google LLC (EUA). Consulte a <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">política de privacidade da Google</a>.</p>
-
         <h2>8. Os seus direitos</h2>
         <p>Ao abrigo do RGPD, tem os seguintes direitos:</p>
         <ul>
@@ -517,44 +470,38 @@ button{cursor:pointer;font-family:inherit}
           <li>Direito de retirar o consentimento</li>
           <li>Direito de apresentar reclamação à <a href="https://www.cnpd.pt" target="_blank" rel="noopener noreferrer">Comissão Nacional de Protecção de Dados</a></li>
         </ul>
-        <p>Para exercer os seus direitos, envie um e-mail para <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a>.</p>
-
+        <p>Para exercer os seus direitos: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a></p>
         <h2>9. Segurança</h2>
         <p>Tomamos medidas técnicas e organizacionais adequadas para proteger os seus dados contra perda ou acesso não autorizado.</p>
-
         <h2>10. Alterações</h2>
         <p>Esta política de privacidade pode ser alterada. A versão mais recente está sempre disponível em casanilaya.com/privacy.html. Em caso de alterações significativas, notificamo-lo por e-mail.</p>
+      </div>
+      <div class="back-btn-wrap">
+        <a href="index.html" class="btn btn--outline">
+          ← <span class="lang-inline nl-inline active">Terug naar Casa Nilaya</span>
+          <span class="lang-inline pt-inline">Voltar para Casa Nilaya</span>
+          <span class="lang-inline en-inline">Back to Casa Nilaya</span>
+        </a>
       </div>
     </div>
 
     <!-- EN -->
-    <div class="privacy-block" id="privacy-en" role="tabpanel">
+    <div class="privacy-block" id="privacy-en">
       <div class="privacy-body">
         <h2>1. Data Controller</h2>
-        <p>Good in Holiday Homes LDA<br>
-        Trading name: Casa Nilaya<br>
-        Website: casanilaya.com<br>
-        Email: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a><br>
-        Address: Cabeço da Vela, Caldas da Rainha, Portugal</p>
-
+        <p>Good in Holiday Homes LDA<br>Trading name: Casa Nilaya<br>Website: casanilaya.com<br>Email: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a><br>Address: Cabeço da Vela, Caldas da Rainha, Portugal</p>
         <h2>2. What data do we collect?</h2>
         <p>We collect only your <strong>email address</strong>, when you sign up for the waitlist on our website. We do not collect any other personal data. We do not use cookies. We do not use tracking or analytics software.</p>
-
         <h2>3. Why do we use your data?</h2>
         <p>Your email address is used solely to notify you when Casa Nilaya is available for booking. We do not send commercial messages without your consent.</p>
-
         <h2>4. Legal basis (GDPR art. 6)</h2>
         <p>Processing is based on your <strong>consent</strong> (art. 6(1)(a) GDPR), given by completing and submitting the sign-up form.</p>
-
         <h2>5. How long do we retain your data?</h2>
         <p>We retain your email address until Casa Nilaya is operational and you have received the first booking notification, or until you withdraw your consent. After that, your data is deleted.</p>
-
         <h2>6. Do we share your data?</h2>
         <p>No. We do not share your personal data with third parties, unless required by law.</p>
-
         <h2>7. Google Fonts</h2>
-        <p>Our website uses Google Fonts for typography. Your IP address may be transmitted to Google LLC (USA). This falls under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</p>
-
+        <p>Our website uses Google Fonts for typography. Your IP address may be transmitted to Google LLC (USA). See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</p>
         <h2>8. Your rights</h2>
         <p>Under the GDPR you have the following rights:</p>
         <ul>
@@ -565,13 +512,18 @@ button{cursor:pointer;font-family:inherit}
           <li>Right to withdraw consent</li>
           <li>Right to lodge a complaint with a supervisory authority</li>
         </ul>
-        <p>To exercise your rights, send an email to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a>.</p>
-
+        <p>To exercise your rights: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#97;&#115;&#97;&#110;&#105;&#108;&#97;&#121;&#97;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">casanilaya&#64;gmail.com</a></p>
         <h2>9. Security</h2>
         <p>We take appropriate technical and organisational measures to protect your data against loss or unauthorised access.</p>
-
         <h2>10. Changes</h2>
         <p>This privacy policy may be updated. The most recent version is always available at casanilaya.com/privacy.html. In case of material changes, we will notify you by email.</p>
+      </div>
+      <div class="back-btn-wrap">
+        <a href="index.html" class="btn btn--outline">
+          ← <span class="lang-inline nl-inline active">Terug naar Casa Nilaya</span>
+          <span class="lang-inline pt-inline">Voltar para Casa Nilaya</span>
+          <span class="lang-inline en-inline">Back to Casa Nilaya</span>
+        </a>
       </div>
     </div>
 
@@ -590,15 +542,18 @@ button{cursor:pointer;font-family:inherit}
         <a href="index.html#omgeving"><span class="nl-inline lang-inline active">Omgeving</span><span class="pt-inline lang-inline">Arredores</span><span class="en-inline lang-inline">Surroundings</span></a>
         <a href="index.html#waitlist"><span class="nl-inline lang-inline active">Wachtlijst</span><span class="pt-inline lang-inline">Lista</span><span class="en-inline lang-inline">Waitlist</span></a>
         <a href="index.html#contact">Contact</a>
+        <a href="privacy.html"><span class="lang-inline nl-inline active">Privacy</span><span class="lang-inline pt-inline">Privacidade</span><span class="lang-inline en-inline">Privacy</span></a>
       </nav>
     </div>
   </div>
 </footer>
 
 <script>
+
 (function() {
   'use strict';
 
+  /* ── Language system ── */
   var LANGS = ['nl', 'pt', 'en'];
   var currentLang = 'nl';
 
@@ -620,7 +575,7 @@ button{cursor:pointer;font-family:inherit}
     });
     document.documentElement.lang = lang;
     try { sessionStorage.setItem('cn_lang', lang); } catch(e) {}
-    // Switch privacy content blocks when on privacy.html
+    // Switch privacy content blocks on this page
     ['nl','pt','en'].forEach(function(l) {
       var panel = document.getElementById('privacy-' + l);
       if (panel) panel.classList.toggle('active', l === lang);
@@ -634,7 +589,7 @@ button{cursor:pointer;font-family:inherit}
     if (saved && LANGS.indexOf(saved) !== -1) setLang(saved);
   } catch(e) {}
 
-  // Nav elevation
+  /* ── Nav elevation on scroll ── */
   var nav = document.getElementById('mainNav');
   if (nav) {
     window.addEventListener('scroll', function() {
@@ -642,14 +597,16 @@ button{cursor:pointer;font-family:inherit}
     }, { passive: true });
   }
 
-  // Mobile menu
+  /* ── Mobile menu ── */
   var menuBtn = document.getElementById('menuBtn');
   var drawer  = document.getElementById('mobileDrawer');
+
   function closeMenu() {
     if (!menuBtn || !drawer) return;
     drawer.classList.remove('open');
     menuBtn.setAttribute('aria-expanded', 'false');
   }
+
   if (menuBtn && drawer) {
     menuBtn.addEventListener('click', function() {
       var isOpen = drawer.classList.toggle('open');
@@ -669,10 +626,70 @@ button{cursor:pointer;font-family:inherit}
     });
   }
 
-  // Lang button delegation
+  /* ── Waitlist form ── */
+  var form    = document.getElementById('waitlistForm');
+  var input   = document.getElementById('emailInput');
+  var success = document.getElementById('successMsg');
+  var errDiv  = document.getElementById('emailError');
+
+  var EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+
+  function sanitizeEmail(val) {
+    return String(val).trim().toLowerCase().substring(0, 254);
+  }
+
+  function showError() {
+    if (!input || !errDiv) return;
+    input.classList.add('invalid');
+    input.setAttribute('aria-invalid', 'true');
+    if (errDiv) errDiv.style.display = 'block';
+  }
+
+  function clearError() {
+    if (!input || !errDiv) return;
+    input.classList.remove('invalid');
+    input.setAttribute('aria-invalid', 'false');
+    if (errDiv) errDiv.style.display = 'none';
+  }
+
+  if (form && input && success) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = sanitizeEmail(input.value);
+      if (!EMAIL_RE.test(email)) {
+        showError();
+        input.focus();
+        return;
+      }
+      clearError();
+      try {
+        var list = JSON.parse(sessionStorage.getItem('cn_wl') || '[]');
+        list.push({ ts: Date.now(), lang: currentLang });
+        sessionStorage.setItem('cn_wl', JSON.stringify(list));
+      } catch(err) {}
+      form.style.display = 'none';
+      success.style.display = 'block';
+    });
+
+    input.addEventListener('blur', function() {
+      if (input.value) {
+        if (!EMAIL_RE.test(sanitizeEmail(input.value))) showError();
+        else clearError();
+      }
+    });
+
+    input.addEventListener('input', function() { clearError(); });
+  }
+
+  // ── Lang button event delegation (no inline onclick) ──
   document.querySelectorAll('[data-lang]').forEach(function(btn) {
-    btn.addEventListener('click', function() { setLang(btn.getAttribute('data-lang')); });
+    btn.addEventListener('click', function() {
+      setLang(btn.getAttribute('data-lang'));
+    });
   });
 
 })();
 
+</script>
+</body>
+</html>
