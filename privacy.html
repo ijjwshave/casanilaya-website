@@ -310,21 +310,6 @@ button{cursor:pointer;font-family:inherit}
   padding:var(--sp-20) 0 var(--sp-24);
   background:var(--col-white);
 }
-.privacy-lang-tabs{
-  display:flex;gap:var(--sp-2);margin-bottom:var(--sp-12);
-  border-bottom:2px solid var(--col-warm);padding-bottom:var(--sp-4);
-}
-.privacy-tab{
-  padding:var(--sp-2) var(--sp-5);
-  font-size:var(--fs-xs);font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  background:transparent;border:1px solid var(--col-warm);border-radius:var(--radius-sm);
-  color:var(--col-muted);cursor:pointer;transition:all var(--dur-fast);
-  -webkit-tap-highlight-color:transparent;
-}
-.privacy-tab.active{
-  background:var(--col-forest);color:var(--col-white);border-color:var(--col-forest);
-}
-.privacy-tab:hover:not(.active){background:var(--col-linen);color:var(--col-dark)}
 .privacy-body{max-width:680px}
 .privacy-body h2{
   font-family:'Cormorant Garamond',Georgia,serif;
@@ -446,12 +431,6 @@ button{cursor:pointer;font-family:inherit}
     </a>
 
     <!-- Language tabs (separate from nav lang switcher) -->
-    <div class="privacy-lang-tabs" role="tablist" aria-label="Taal privacybeleid">
-      <button class="privacy-tab active" role="tab" aria-selected="true"  data-privacy-lang="nl">NL</button>
-      <button class="privacy-tab"        role="tab" aria-selected="false" data-privacy-lang="pt">PT</button>
-      <button class="privacy-tab"        role="tab" aria-selected="false" data-privacy-lang="en">EN</button>
-    </div>
-
     <!-- NL -->
     <div class="privacy-block active" id="privacy-nl" role="tabpanel">
       <div class="privacy-body">
@@ -641,6 +620,11 @@ button{cursor:pointer;font-family:inherit}
     });
     document.documentElement.lang = lang;
     try { sessionStorage.setItem('cn_lang', lang); } catch(e) {}
+    // Switch privacy content blocks when on privacy.html
+    ['nl','pt','en'].forEach(function(l) {
+      var panel = document.getElementById('privacy-' + l);
+      if (panel) panel.classList.toggle('active', l === lang);
+    });
   }
   window.setLang = setLang;
 
@@ -692,23 +676,3 @@ button{cursor:pointer;font-family:inherit}
 
 })();
 
-// ── Privacy language tabs (independent of nav lang switcher) ──
-document.querySelectorAll('[data-privacy-lang]').forEach(function(tab) {
-  tab.addEventListener('click', function() {
-    var lang = tab.getAttribute('data-privacy-lang');
-    // Update tabs
-    document.querySelectorAll('[data-privacy-lang]').forEach(function(t) {
-      var active = t.getAttribute('data-privacy-lang') === lang;
-      t.classList.toggle('active', active);
-      t.setAttribute('aria-selected', String(active));
-    });
-    // Update panels
-    ['nl','pt','en'].forEach(function(l) {
-      var panel = document.getElementById('privacy-' + l);
-      if (panel) panel.classList.toggle('active', l === lang);
-    });
-  });
-});
-</script>
-</body>
-</html>
